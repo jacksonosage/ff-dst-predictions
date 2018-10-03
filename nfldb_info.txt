@@ -1,0 +1,24 @@
+psql -U nfldb nfldb
+password: nfldb_pswd
+
+
+
+nfldb changes
+
+ADD
+nfldb=> insert into team values ('JAX','Jacksonville','Jaguars');
+nfldb=> insert into team values ('LAC','Los Angeles','Chargers');
+
+
+FIX
+UPDATE play SET pos_team = 'JAC' WHERE pos_team = 'JAX';
+UPDATE play SET pos_team = ’SD’ WHERE pos_team = 'L';
+
+REMOVE
+DELETE FROM team WHERE team_id = 'JAX';
+DELETE FROM team WHERE team_id = ‘LAC’;
+
+
+
+https://github.com/BurntSushi/nfldb/issues/267
+https://github.com/BurntSushi/nfldb/issues/194#issuecomment-265892250
